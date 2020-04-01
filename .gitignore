@@ -171,8 +171,6 @@ project.lock.json
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
 Build
-/src/CakeBuild/tools/Cake/*
-/src/CakeBuild/tools/NUnit.ConsoleRunner.*/*
-/src/CakeBuild/tools/nuget.exe
-/src/CakeBuild/tools/packages.config.md5sum
- 
+**.suo
+**.user
+**.cache
