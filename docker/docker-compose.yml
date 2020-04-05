@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+
+    at-mysql56:
+        container_name: at-mysql56-local
+        image: mysql:5.6
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+        networks:
+            - internal
+        ports:
+            - "3306:3306"
+        volumes:
+            - mysql_data:/var/lib/mysql:delegated
+            - mysql_conf:/etc/mysql/conf.d
+            - mysql_init:/docker-entrypoint-initdb.d
+
+
+volumes:
+    mysql_data:
+        driver_opts:
+            type: none
+            device: ${AT_DATA}/mysql/data
+            o: bind
+    mysql_conf:
+        driver_opts:
+            type: none
+            device: ${AT_DATA}/mysql/conf
+            o: bind
+    mysql_init:
+        driver_opts:
+            type: none
+            device: ${AT_DATA}/mysql/init
+            o: bind
+
+networks:
+    internal:
